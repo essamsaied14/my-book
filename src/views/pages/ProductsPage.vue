@@ -9,9 +9,8 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae nostrum natus excepturi fuga ullam accusantium vel ut eveniet aut consequatur laboriosam ipsam.</p>
           </div>
         </div>
-        <div class="row">
-          <product-card></product-card>
-        </div>
+
+        <product-card></product-card>
       </div>
     </div>
   </div>

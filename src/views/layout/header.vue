@@ -61,7 +61,7 @@
           <div class="col-6 col-xl-2">
             <h1 class="mb-0 site-logo">
               <a href="index.html" class="text-black mb-0">
-                Selling
+                your book
                 <span class="text-primary">.</span>
               </a>
             </h1>

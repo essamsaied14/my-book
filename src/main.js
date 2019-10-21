@@ -36,7 +36,7 @@ import UpdatesNotification from "./views/pages/UpdatesNotification.vue";
 import FeaturedProducts from "./views/pages/FeaturedProducts.vue";
 import featuredcard from "./components/product/featured-products-card.vue";
 import ContactUs from "./views/pages/ContactUs.vue";
-
+import SingelPage from "./components/product/SingelPage.vue";
 
 
 
@@ -49,6 +49,7 @@ Vue.component("updates-notification", UpdatesNotification);
 Vue.component("featured-products", FeaturedProducts);
 Vue.component("featured-products-card", featuredcard);
 Vue.component("contact-us", ContactUs);
+Vue.component("singel-page", SingelPage);
 Vue.config.productionTip = false;
 
 new Vue({

@@ -1,13 +1,13 @@
 <template >
-  <div>
-    <div class="col-lg-4 col-md-6 mb-5">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-5" v-for="(product,index) in products" :key="index">
       <div class="product-item">
         <figure>
-          <img src="images/model_1_bg.jpg" alt="Image" class="img-fluid" />
+          <img :src="product.imgSrc" alt="Image" class="img-fluid" ter />
         </figure>
         <div class="px-4">
           <h3>
-            <a href="#">Wild West Hoodie</a>
+            <a href="#">{{product.title}}</a>
           </h3>
           <div class="mb-3">
             <span class="meta-icons mr-3">
@@ -21,10 +21,14 @@
               </a> 29
             </span>
           </div>
-          <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
+          <p class="mb-4">{{product.desc}}</p>
           <div>
             <a href="#" class="btn btn-black mr-1 rounded-0">Cart</a>
-            <a href="#" class="btn btn-black btn-outline-black ml-1 rounded-0">View</a>
+            <router-link
+              to="/single-page"
+              href="#"
+              class="btn btn-black btn-outline-black ml-1 rounded-0"
+            >View</router-link>
           </div>
         </div>
       </div>
@@ -32,5 +36,39 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      //     fetch('https://jsonplaceholder.typicode.com/posts/1')
+      // .then(response => response.json())
+      // .then(json => console.log(json));
+      products: [
+        // fetch("https://jsonplaceholder.typicode.com/posts/1")
+        //   .then(response => response.json())
+        //   .then(json => console.log(json))
+        {
+          name: "product-1",
+          desc:
+            "Oud Trat is one of the most luxurious oud specials for the influential people, because it is one of the finest scents that gives you strength and attractiveness.Tourat forest specialists search for it for you.It ",
+          imgSrc:
+            "http://images.squarespace-cdn.com/content/v1/5aa83bad9772ae97813540d0/1546342351907-4R2L1N4GITARI03VU9N0/ke17ZwdGBToddI8pDm48kJPo64LO3YZG-4f-ST8EfI9Zw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVGunbRojLjYM_qWg5xABZ5ZcuB4bj617U7w2cj588VrBRur-lC0WofN0YB1wFg-ZW0/cover_UC95Q8VU77.png"
+        },
+        {
+          name: "product-2",
+          desc:
+            "Oud Trat is one of the most luxurious oud specials for the influential people, because it is one of the finest scents that gives you strength and attractiveness.Tourat forest specialists search for it for you.It ",
+          imgSrc:
+            "https://timedotcom.files.wordpress.com/2015/06/521811839-copy.jpg"
+        },
+        {
+          name: "product-3",
+          desc:
+            "Oud Trat is one of the most luxurious oud specials for the influential people, because it is one of the finest scents that gives you strength and attractiveness.Tourat forest specialists search for it for you.It ",
+          imgSrc:
+            "https://images-na.ssl-images-amazon.com/images/I/41JYDubvTvL._SX258_BO1,204,203,200_.jpg"
+        }
+      ]
+    };
+  }
+};
 </script>
