@@ -9,16 +9,22 @@ import "bootstrap";
 import "jquery-ui";
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel";
-let owl_carousel = require('owl.carousel');
+let owl_carousel = require("owl.carousel");
 window.fn = owl_carousel;
-import "../src/assets/css/jquery.fancybox.min.css"
-import "../src/assets/fonts/flaticon/font/flaticon.css"
+import "../src/assets/css/jquery.fancybox.min.css";
+import "../src/assets/fonts/flaticon/font/flaticon.css";
 import "./assets/app.scss";
 
 // links index html
 import "../src/assets/fonts/icomoon/style.css";
 // import "../src/assets/css/aos.css"
 import "../src/assets/css/style.css";
+
+// axios
+import axios from "axios";
+import VueAxios from "vue-axios";
+
+Vue.use(VueAxios, axios);
 
 // import BootstrapVue from "bootstrap-vue";
 // Vue.use(BootstrapVue);
@@ -29,7 +35,8 @@ import "../src/assets/css/style.css";
 // Vue.use(scss);
 import SiteHeader from "./views/layout/header.vue";
 import SiteFooter from "./views/layout/footer.vue";
-import carousel from "./views/pages/HomeComponent.vue";
+import HomePage from "./views/pages/HomeComponent.vue";
+import TopSection from "./views/pages/TopSection.vue";
 import productspage from "./views/pages/ProductsPage.vue";
 import ProductCard from "./components/product/product-card.vue";
 import UpdatesNotification from "./views/pages/UpdatesNotification.vue";
@@ -38,11 +45,10 @@ import featuredcard from "./components/product/featured-products-card.vue";
 import ContactUs from "./views/pages/ContactUs.vue";
 import SingelPage from "./components/product/SingelPage.vue";
 
-
-
 Vue.component("site-header", SiteHeader);
 Vue.component("site-footer", SiteFooter);
-Vue.component("site-carousel", carousel);
+Vue.component("site-homepage", HomePage);
+Vue.component("site-topsection", TopSection);
 Vue.component("site-products", productspage);
 Vue.component("product-card", ProductCard);
 Vue.component("updates-notification", UpdatesNotification);

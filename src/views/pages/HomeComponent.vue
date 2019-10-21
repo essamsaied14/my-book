@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <site-carousel></site-carousel> -->
+    <site-topsection></site-topsection>
     <site-products></site-products>
-    
-    </div>
+    <updates-notification></updates-notification>
+    <contact-us></contact-us>
   </div>
 </template>
 
