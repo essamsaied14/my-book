@@ -19,7 +19,9 @@ export default new Router({
     },
     {
       path: '/single-page',
-      component: SingelPage
+      component: SingelPage,
+      name: 'single-product',
+      props: true
     }
   ]
 })
