@@ -18,7 +18,7 @@ export default new Router({
       component: Productspage
     },
     {
-      path: '/single-page',
+      path: '/single-page/:id',
       component: SingelPage,
       name: 'single-product',
       props: true

@@ -25,7 +25,7 @@
           <div>
             <a href="#" class="btn btn-black mr-1 rounded-0">Cart</a>
             <router-link
-              :to="{name:'single-product', params:{productData: product}}"
+              :to="{name:'single-product', params:{id: product.id}}"
               href="#"
               class="btn btn-black btn-outline-black ml-1 rounded-0"
             >View</router-link>
@@ -75,7 +75,7 @@ export default {
         .then(response => {
           this.products = response.data;
 
-          console.log(this.products);
+          //console.log(this.products);
         });
     }
   },

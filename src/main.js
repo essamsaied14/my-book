@@ -7,6 +7,10 @@ window.$ = window.jQuery = jQuery;
 import "popper.js";
 import "bootstrap";
 import "jquery-ui";
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel";
 let owl_carousel = require("owl.carousel");
@@ -25,6 +29,8 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 
 Vue.use(VueAxios, axios);
+Vue.use(ElementUI);
+
 
 // import BootstrapVue from "bootstrap-vue";
 // Vue.use(BootstrapVue);
