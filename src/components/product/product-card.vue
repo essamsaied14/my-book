@@ -15,11 +15,12 @@
                 <span class="icon-star text-warning"></span>
               </a> 5.0
             </span>
-            <span class="meta-icons wishlist">
+            <wishlist-product :product="product"></wishlist-product>
+            <!-- <span class="meta-icons wishlist">
               <a href="#" class="mr-2">
                 <span class="icon-heart"></span>
               </a> 29
-            </span>
+            </span>-->
           </div>
           <p class="mb-4">{{product.title}}</p>
           <div>

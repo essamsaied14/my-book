@@ -50,6 +50,9 @@ import FeaturedProducts from "./views/pages/FeaturedProducts.vue";
 import featuredcard from "./components/product/featured-products-card.vue";
 import ContactUs from "./views/pages/ContactUs.vue";
 import SingelPage from "./components/product/SingelPage.vue";
+import DialogCheck from "./views/pages/DialogCheck.vue";
+import WishlistProduct from "./components/product/WishlistProduct.vue";
+import Favorite from "./views/pages//Favorite.vue";
 
 Vue.component("site-header", SiteHeader);
 Vue.component("site-footer", SiteFooter);
@@ -62,10 +65,21 @@ Vue.component("featured-products", FeaturedProducts);
 Vue.component("featured-products-card", featuredcard);
 Vue.component("contact-us", ContactUs);
 Vue.component("singel-page", SingelPage);
+Vue.component("dialog-check", DialogCheck);
+Vue.component("wishlist-product", WishlistProduct);
+Vue.component("favorite-product", Favorite);
 Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
+  created() {
+    // this.$store.getters.cartItems
+  },
+  // data() {
+  //   return {
+  //     name: "I'm the root component"
+  //   }
+  // },
   render: h => h(App)
 }).$mount("#app");

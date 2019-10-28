@@ -13,26 +13,26 @@
         <product-card></product-card>
       </div>
     </div>
-    <ul class="cartItems">
+    <!-- <ul class="cartItems">
       <li v-for="(item,index) in cartItems" :key="index">
         <a>ID : {{item.id}} | Title : {{item.title}}</a>
       </li>
-    </ul>
+    </ul>-->
     <!-- {{cartItems}} -->
   </div>
 </template>
 
 
 <script>
-export default {
-  data() {
-    return {
-      cartItems: this.$store.getters.cartItems
-    };
-  },
-  mounted() {
-    console.log(this.cartItems);
-    // this.cartItems.forEach(el => console.log(el));
-  }
-};
+// export default {
+//   data() {
+//     // return {
+//     //   cartItems: this.$store.getters.cartItems
+//     // };
+//   }
+//   // mounted() {
+//   //   console.log(this.cartItems);
+//   //   // this.cartItems.forEach(el => console.log(el));
+//   // }
+// };
 </script>
