@@ -46,7 +46,7 @@
                     </div>
                   </td>
                   <td>
-                    <p>{{item.title}}</p>
+                    <p>{{item.title}}shop</p>
                   </td>
                   <td>
                     <img :src="item.url" alt srcset />
