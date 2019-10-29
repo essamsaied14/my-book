@@ -11,20 +11,49 @@
       <div class="bg-white py-4 mb-4">
         <div class="row mx-4 my-4 product-item-2 align-items-start">
           <div class="col-md-6 mb-5 mb-md-0">
-            <img :src="productInfo.url" alt="Image" class="img-fluid" />
+            <img :src="fullData.productInfo.url" alt="Image" class="img-fluid" />
           </div>
 
           <div class="col-md-5 ml-auto product-title-wrap">
-            <span class="number">{{productInfo.id}}</span>
-            <h3 class="text-black mb-4 font-weight-bold">About This Product : {{productInfo.id}}</h3>
-            <p class="mb-4">{{productInfo.title}}</p>
-            <p>{{productInfo.title}}</p>
+            <span class="number">{{fullData.productInfo.id}}</span>
+            <h3
+              class="text-black mb-4 font-weight-bold"
+            >About This Product : {{fullData.productInfo.id}}</h3>
+            <p class="mb-4">{{fullData.productInfo.title}}</p>
+            <p>{{fullData.productInfo.title}}</p>
 
             <div class="mb-4">
               <h3 class="text-black font-weight-bold h5">Price:</h3>
               <div class="price">
-                <del class="mr-2">${{productInfo.price}}</del>
-                ${{productInfo.priceDiscount}}
+                <del class="mr-2">${{fullData.productInfo.price}}</del>
+                ${{fullData.productInfo.priceDiscount}}
+              </div>
+            </div>
+            <div class="el-input-number">
+              <span role="button" class="el-input-number__decrease" @click="decrement">
+                <i class="el-icon-minus"></i>
+              </span>
+              <span role="button" class="el-input-number__increase" @click="increment">
+                <i class="el-icon-plus"></i>
+              </span>
+              <div class="el-input">
+                <!---->
+                <input
+                  v-model="fullData.quantity"
+                  type="text"
+                  autocomplete="off"
+                  class="el-input__inner"
+                  role="spinbutton"
+                  aria-valuemax="10"
+                  aria-valuemin="1"
+                  aria-valuenow="1"
+                  aria-disabled="undefined"
+                />
+
+                <!---->
+                <!---->
+                <!---->
+                <!---->
               </div>
             </div>
             <p>
@@ -38,33 +67,7 @@
                 class="btn btn-black rounded-0 d-block d-lg-inline-block"
               >Add To Cart</a>
             </p>
-            <div class="el-input-number">
-              <span role="button" class="el-input-number__decrease" @click="decrement">
-                <i class="el-icon-minus"></i>
-              </span>
-              <span role="button" class="el-input-number__increase" @click="increment">
-                <i class="el-icon-plus"></i>
-              </span>
-              <div class="el-input">
-                <!---->
-                <input
-                  type="text"
-                  autocomplete="off"
-                  class="el-input__inner"
-                  role="spinbutton"
-                  aria-valuemax="10"
-                  aria-valuemin="1"
-                  aria-valuenow="1"
-                  aria-disabled="undefined"
-                  :value="count"
-                />
 
-                <!---->
-                <!---->
-                <!---->
-                <!---->
-              </div>
-            </div>
             <!-- <el-input-number class v-model="num" @change="handleChange" :min="1" :max="10"></el-input-number> -->
           </div>
         </div>
@@ -77,9 +80,13 @@ export default {
   data: function() {
     return {
       productId: this.$route.params.id,
-      productInfo: {},
-      num: 1,
-      count: 1
+      // productInfo: {},
+      fullData: {
+        productInfo: {},
+        quantity: 1
+      },
+      num: 1
+      // quantity: 1
     };
   },
   created() {
@@ -92,13 +99,13 @@ export default {
       this.axios
         .get("https://jsonplaceholder.typicode.com/photos/" + Id)
         .then(response => {
-          this.productInfo = response.data;
+          this.fullData.productInfo = response.data;
           /** Get Random Number  */
           // Math.random(MIN,MAX)
-          this.productInfo.price = this.getRandomInt(500, 1000);
-          this.productInfo.priceDiscount = this.getRandomInt(
+          this.fullData.productInfo.price = this.getRandomInt(500, 1000);
+          this.fullData.productInfo.priceDiscount = this.getRandomInt(
             500,
-            this.productInfo.price - 1
+            this.fullData.productInfo.price - 1
           );
         });
 
@@ -111,17 +118,17 @@ export default {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
     increment() {
-      if (this.count < 10) {
-        this.count++;
+      if (this.fullData.quantity < 10) {
+        this.fullData.quantity++;
       }
     },
     decrement() {
-      if (this.count > 1) {
-        this.count--;
+      if (this.fullData.quantity > 1) {
+        this.fullData.quantity--;
       }
     },
     addTocheck() {
-      this.$store.commit("AddCartItem", this.productInfo);
+      this.$store.commit("AddCartItem", this.fullData);
     }
     // handleChange(value) {
     //   console.log(value);
