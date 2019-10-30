@@ -33,27 +33,23 @@
                   <th scope="col">#</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name product</th>
-                  <th scope="col">price</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- v-for="(item,index) in cartItems" :key="index" -->
                 <tr v-for="(item,index) in wishList" :key="index">
-                  <th scope="row"></th>
+                  <th scope="row">{{item.id}}</th>
                   <td>
                     <div class="text-center">
-                      <img src class="rounded img-product-table" alt="..." />
+                      <img :src="item.url" class="rounded img-product-table" alt="..." />
                     </div>
                   </td>
                   <td>
-                    <p>{{item.title}}shop</p>
+                    <p>{{item.title}}</p>
                   </td>
+
                   <td>
-                    <img :src="item.url" alt srcset />
-                  </td>
-                  <td></td>
-                  <td>
-                    <a @click="removeCart(item)" class="text-danger">
+                    <a @click="removeWishlist(item)" class="text-danger">
                       <i title="Delete" class="fa fa-close">Delete</i>
                     </a>
                   </td>
@@ -74,11 +70,32 @@
 export default {
   data() {
     return {
-      wishList: this.$store.getters.wishList
+      // wishList: this.$store.getters.wishList
     };
   },
+
   mounted() {
-    console.log(this.wishList);
+    // console.log(this.wishList);
+  },
+  computed: {
+    wishList() {
+      if (this.$store.state.wishList.length) {
+        return this.$store.state.wishList;
+      } else {
+        return this.$store.getters.wishList;
+      }
+    }
+  },
+  methods: {
+    removeWishlist(e) {
+      this.$store.commit("removeWishlist", e);
+    }
+  },
+  watch: {
+    wishList: {
+      handler() {},
+      deep: true
+    }
   }
 };
 </script>

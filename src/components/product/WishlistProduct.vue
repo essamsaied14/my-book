@@ -4,16 +4,17 @@
     element-loading-text="xxxxx"
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 52, 128,0.6)"-->
-    <template v-if="like">
-      <span @click="removeProduct()" class="meta-icons wishlist">
-        <i class="icon-heart" :class="liked"></i>
+    <div v-if="like">
+      <span @click="removeWishlist(product)" class="meta-icons wishlist red">
+        <i class="icon-heart"></i>
+        <!-- :class="liked" -->
       </span>
-    </template>
-    <template v-if="!like">
-      <span @click="AddWishlist()" class="meta-icons wishlist">
+    </div>
+    <div v-if="!like">
+      <span @click="AddWishlist()" class="meta-icons wishlist blue">
         <i class="icon-heart"></i>
       </span>
-    </template>
+    </div>
   </div>
 </template>
 <script>
@@ -25,7 +26,7 @@ export default {
   },
   props: ["product"],
   mounted() {
-    console.log(this.product);
+    // console.log(this.product);
     // this.cartItems.forEach(el => console.log(el));
   },
   //   data() {
@@ -37,18 +38,45 @@ export default {
   computed: {
     liked: function() {
       return this.like ? "like" : "";
+    },
+    wishList() {
+      if (this.$store.state.wishList.length) {
+        return this.$store.state.wishList;
+      } else {
+        return this.$store.getters.wishList;
+      }
     }
   },
   methods: {
     AddWishlist() {
       this.$store.commit("AddWishlist", this.product);
+      this.like = true;
     },
-    removeProduct() {}
+    removeWishlist(e) {
+      this.$store.commit("removeWishlist", e);
+      this.like = false;
+    }
+  },
+  watch: {
+    wishList: {
+      handler() {},
+      deep: true
+    },
+    like: {
+      handler() {},
+      deep: true
+    }
   }
 };
 </script>
 <style>
-.like {
+/* .like {
   color: rgb(230, 226, 40);
+} */
+.red {
+  color: brown;
+}
+.blue {
+  color: blue;
 }
 </style>

@@ -15,6 +15,9 @@
                 <span class="icon-star text-warning"></span>
               </a> 5.0
             </span>
+            <span class="meta-icons mr-3">
+              <span class>$111</span>
+            </span>
             <wishlist-product :product="product"></wishlist-product>
             <!-- <span class="meta-icons wishlist">
               <a href="#" class="mr-2">
@@ -36,9 +39,9 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
-  props: [],
   data() {
     return {
       //     fetch('https://jsonplaceholder.typicode.com/posts/1')
@@ -69,6 +72,7 @@ export default {
       // }
     };
   },
+
   methods: {
     getData() {
       this.axios

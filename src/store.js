@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     cartData: [],
     wishList: []
+
   },
   getters: {
     cartItems() {
@@ -14,7 +15,8 @@ export default new Vuex.Store({
     },
     wishList() {
       return JSON.parse(localStorage.getItem('wishList'));
-    }
+    },
+
   },
   mutations: {
     AddCartItem(state, product) {
@@ -26,15 +28,26 @@ export default new Vuex.Store({
       state.cartData.push(product);
 
       localStorage.setItem("cartData", JSON.stringify(state.cartData));
+      // console.log('store', state.cartData)
+      // console.log('lstorage', JSON.parse(localStorage.getItem('cartData')))
 
     },
 
     removeCart(state, product) {
+
+      // console.log(product);
       if (localStorage.getItem('cartData')) {
         state.cartData = JSON.parse(localStorage.getItem('cartData'));
       }
-      state.cartData.splice(state.cartData.indexOf(product), 1);
+      Array.prototype.forEach.call(state.cartData, childProduct => {
+        if (product.productInfo.id == childProduct.productInfo.id) {
+
+          state.cartData.splice(state.cartData.indexOf(childProduct), 1);
+        }
+
+      });
       localStorage.setItem("cartData", JSON.stringify(state.cartData));
+
     },
     AddWishlist(state, product) {
       if (localStorage.getItem('wishList')) {
@@ -43,7 +56,15 @@ export default new Vuex.Store({
       state.wishList.push(product);
 
       localStorage.setItem("wishList", JSON.stringify(state.wishList));
-    }
+    },
+    removeWishlist(state, product) {
+      // if (localStorage.getItem('wishList')) {
+      //   state.wishList = JSON.parse(localStorage.getItem('wishList'));
+      // }
+      state.wishList.splice(state.wishList.indexOf(product), 1);
+      localStorage.setItem("wishList", JSON.stringify(state.wishList));
+    },
+
 
   }
 })
