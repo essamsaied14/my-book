@@ -10,7 +10,7 @@ import "jquery-ui";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-
+// const random = require('random');
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel";
 let owl_carousel = require("owl.carousel");
@@ -18,7 +18,9 @@ window.fn = owl_carousel;
 import "../src/assets/css/jquery.fancybox.min.css";
 import "../src/assets/fonts/flaticon/font/flaticon.css";
 import "./assets/app.scss";
+Vue.component('VueFontawesome', require('vue-fontawesome-icon/src/components/VueFontawesome.vue').default);
 
+Vue.config.productionTip = false
 // links index html
 import "../src/assets/fonts/icomoon/style.css";
 // import "../src/assets/css/aos.css"
@@ -52,7 +54,9 @@ import ContactUs from "./views/pages/ContactUs.vue";
 import SingelPage from "./components/product/SingelPage.vue";
 import DialogCheck from "./views/pages/DialogCheck.vue";
 import WishlistProduct from "./components/product/WishlistProduct.vue";
-import Favorite from "./views/pages//Favorite.vue";
+import Favorite from "./views/pages/Favorite.vue";
+import Cart from "./components/product/Cart.vue";
+import CheckOut from "./components/product/CheckOut.vue";
 
 Vue.component("site-header", SiteHeader);
 Vue.component("site-footer", SiteFooter);
@@ -68,6 +72,8 @@ Vue.component("singel-page", SingelPage);
 Vue.component("dialog-check", DialogCheck);
 Vue.component("wishlist-product", WishlistProduct);
 Vue.component("favorite-product", Favorite);
+Vue.component("Cart-product", Cart);
+Vue.component("checkout-page", CheckOut);
 Vue.config.productionTip = false;
 
 new Vue({
