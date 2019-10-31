@@ -58,13 +58,28 @@ export default new Vuex.Store({
       localStorage.setItem("wishList", JSON.stringify(state.wishList));
     },
     removeWishlist(state, product) {
-      // if (localStorage.getItem('wishList')) {
-      //   state.wishList = JSON.parse(localStorage.getItem('wishList'));
-      // }
-      state.wishList.splice(state.wishList.indexOf(product), 1);
+      if (localStorage.getItem('wishList')) {
+        state.wishList = JSON.parse(localStorage.getItem('wishList'));
+
+      }
+      Array.prototype.forEach.call(state.wishList, childwishlist => {
+        if (product.id == childwishlist.id) {
+          state.wishList.splice(state.wishList.indexOf(childwishlist), 1);
+        }
+      })
+
       localStorage.setItem("wishList", JSON.stringify(state.wishList));
     },
-
+    increment() {
+      if (this.fullData.quantity < 10) {
+        this.fullData.quantity++;
+      }
+    },
+    decrement() {
+      if (this.fullData.quantity > 1) {
+        this.fullData.quantity--;
+      }
+    },
 
   }
 })

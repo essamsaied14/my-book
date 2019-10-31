@@ -24,8 +24,11 @@
           </td>
           <td>{{item.productInfo.priceDiscount}}</td>
           <td>
+            <span>+</span>
             <input type="text" class="el-input__inner" v-model="item.quantity" />
+            <span>-</span>
           </td>
+
           <td>
             <a @click="removeCart(item)" class="text-danger">
               <i title="Delete" class="fa fa-close">Delete</i>

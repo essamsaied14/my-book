@@ -10,7 +10,7 @@ import "jquery-ui";
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-
+// const random = require('random');
 // import "owl.carousel/dist/assets/owl.carousel.css";
 // import "owl.carousel";
 let owl_carousel = require("owl.carousel");

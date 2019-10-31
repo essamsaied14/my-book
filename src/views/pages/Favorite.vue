@@ -33,6 +33,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Image</th>
                   <th scope="col">Name product</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -93,6 +94,10 @@ export default {
   },
   watch: {
     wishList: {
+      handler() {},
+      deep: true
+    },
+    like: {
       handler() {},
       deep: true
     }

@@ -10,19 +10,20 @@
           </div>
         </div>
         <div>
+          <span>Filters :</span>
           <ul>
-            <li></li>
             <li>
-              <a href @click.prevent="filter='price'" :class="{selected:filter=='price'}">price</a>
+              <button @click="all()">All</button>
             </li>
-            <div @click="name()">name</div>
-
             <li>
-              <a href @click.prevent="filter='rate'" :class="{selected:filter=='rate'}">rate</a>
+              <button @click="albumId(1)">Album ID 1</button>
+            </li>
+            <li>
+              <button @click="albumId(2)">Album ID 2</button>
             </li>
           </ul>
         </div>
-        <product-card></product-card>
+        <product-card :products="products"></product-card>
       </div>
     </div>
     <!-- <ul class="cartItems">
@@ -31,6 +32,7 @@
       </li>
     </ul>-->
     <!-- {{cartItems}} -->
+    <!-- word emit?? -->
   </div>
 </template>
 
@@ -40,8 +42,14 @@ export default {
   data() {
     return {
       filter: "",
-      productsData: this.$store.getters.cartItems
+      productsSource: [],
+      products: []
+
+      // productsData: this.$store.getters.cartItems
     };
+  },
+  created() {
+    this.getData();
   },
   // computed: {
   //   filterdProduct: function() {
@@ -49,24 +57,41 @@ export default {
   //   }
   // },
   methods: {
-    name() {
-      console.log(this.productsData);
-      return this.productsData.filter(function(product) {
-        console.log("product");
+    all() {
+      // console.log(this.productsData);
+      this.products = this.productsSource;
+    },
+    albumId: function(albumId) {
+      var filteredProducts = [];
+      filteredProducts = this.productsSource.filter(function(product) {
+        //console.log(_self.productsForFiltering);
+        return product.albumId == albumId;
+      });
 
-        return product.id < 2;
-      });
+      this.products = filteredProducts;
     },
-    price: function(product) {
-      return product.filter(function(pro) {
-        return pro.price;
-      });
-    },
-    rate: function(product) {
-      return product.filter(function(pro) {
-        return pro.rate;
-      });
+
+    getData() {
+      this.axios
+        .get("https://jsonplaceholder.typicode.com/photos")
+        .then(response => {
+          this.products = response.data;
+          this.productsSource = this.products;
+          // this.productInfo.price = this.getRandomInt(500, 1000);
+          // this.productInfo.priceDiscount = this.getRandomInt(
+          //   500,
+          //   this.productInfo.price - 1
+          // );
+          // this.$emit("allProducts", this.products);
+
+          //console.log(this.products);
+        });
     }
+    // getRandomInt(min, max) {
+    //   min = Math.ceil(min);
+    //   max = Math.floor(max);
+    //   return Math.floor(Math.random() * (max - min + 1)) + min;
+    // }
   }
   // filters() {
   //   this.$store.commit("filters", this.product);
