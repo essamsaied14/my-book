@@ -11,15 +11,18 @@
         </div>
         <div>
           <span>Filters :</span>
-          <ul>
-            <li>
+          <ul class="list-group list-group-horizontal">
+            <li class="list-group-item">
               <button @click="all()">All</button>
             </li>
-            <li>
+            <li class="list-group-item">
               <button @click="albumId(1)">Album ID 1</button>
             </li>
-            <li>
+            <li class="list-group-item">
               <button @click="albumId(2)">Album ID 2</button>
+            </li>
+            <li class="list-group-item">
+              <button @click="Arrangement(productsSource)">A/z</button>
             </li>
           </ul>
         </div>
@@ -43,7 +46,8 @@ export default {
     return {
       filter: "",
       productsSource: [],
-      products: []
+      products: [],
+      sortedProducts: []
 
       // productsData: this.$store.getters.cartItems
     };
@@ -64,11 +68,31 @@ export default {
     albumId: function(albumId) {
       var filteredProducts = [];
       filteredProducts = this.productsSource.filter(function(product) {
-        //console.log(_self.productsForFiltering);
+        // console.log(filteredProducts);
         return product.albumId == albumId;
       });
 
       this.products = filteredProducts;
+    },
+    // Arrangement(arr) {
+    //   // this.sortedProducts = [];
+    //   // this.sortedProducts = this.productsSource.sort(function(product) {
+
+    //   // });
+    //   return arr.slice().sort(function(a, b) {
+    //     return a.title - b.title;
+    //   });
+
+    //   console.log(this.sortedProducts);
+    // },
+    Arrangement(arr) {
+      // Set slice() to avoid to generate an infinite loop!
+      this.sortedProducts = arr.slice().sort(function(a, b) {
+        // alert(b.title[0]);
+        return a.title.charCodeAt(0) - b.title.charCodeAt(0);
+      });
+      // console.log(this.sortedProducts);
+      this.products = this.sortedProducts;
     },
 
     getData() {

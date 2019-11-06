@@ -1,6 +1,6 @@
 <template >
   <div class="row">
-    <div class="col-lg-4 col-md-6 mb-5" v-for="product in products.slice(0, 9)" :key="product.id">
+    <div class="col-lg-4 col-md-6 mb-5" v-for="product in products.slice(0, 100)" :key="product.id">
       <div class="product-item">
         <h2>{{ product.id }} Album ID : {{ product.albumId }}</h2>
         <figure>

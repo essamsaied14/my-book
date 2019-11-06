@@ -29,7 +29,7 @@
                 ${{fullData.productInfo.priceDiscount}}
               </div>
             </div>
-            <div class="el-input-number">
+            <!-- <div class="el-input-number">
               <span role="button" class="el-input-number__decrease" @click="decrement">
                 <i class="el-icon-minus"></i>
               </span>
@@ -37,9 +37,9 @@
                 <i class="el-icon-plus"></i>
               </span>
               <div class="el-input">
-                <!---->
+               
                 <input
-                  v-model="fullData.quantity"
+                  v-model="qty"
                   type="text"
                   autocomplete="off"
                   class="el-input__inner"
@@ -49,13 +49,9 @@
                   aria-valuenow="1"
                   aria-disabled="undefined"
                 />
-
-                <!---->
-                <!---->
-                <!---->
-                <!---->
               </div>
-            </div>
+            </div>-->
+            <quantity-page></quantity-page>
             <p>
               <a
                 href="#"
@@ -83,7 +79,7 @@ export default {
       // productInfo: {},
       fullData: {
         productInfo: {},
-        quantity: 1
+        quantity: 0
       },
       num: 1
       // quantity: 1
@@ -117,22 +113,44 @@ export default {
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-    increment() {
-      if (this.fullData.quantity < 10) {
-        this.fullData.quantity++;
-      }
-    },
-    decrement() {
-      if (this.fullData.quantity > 1) {
-        this.fullData.quantity--;
-      }
-    },
+    // increment() {
+    //   // if (this.fullData.quantity < 10) {
+    //   //   this.fullData.quantity++;
+    //   // }
+    //   this.$store.commit("incrementes");
+    // },
+    // decrement() {
+    //   // if (this.fullData.quantity > 1) {
+    //   //   this.fullData.quantity--;
+    //   // }
+    //   this.$store.commit("decrementes");
+    // },
     addTocheck() {
+      this.fullData.quantity = this.$store.state.quantity;
       this.$store.commit("AddCartItem", this.fullData);
     }
     // handleChange(value) {
     //   console.log(value);
     // }
   }
+  // computed: {
+  //   qty() {
+  //     return this.$store.state.quantity;
+  //   }
+  // },
+  // watch: {
+  //   decrement: {
+  //     handler() {},
+  //     deep: true
+  //   },
+  //   increment: {
+  //     handler() {},
+  //     deep: true
+  //   },
+  //   qty: {
+  //     handler() {},
+  //     deep: true
+  //   }
+  // }
 };
 </script>

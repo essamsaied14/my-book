@@ -57,6 +57,8 @@ import WishlistProduct from "./components/product/WishlistProduct.vue";
 import Favorite from "./views/pages/Favorite.vue";
 import Cart from "./components/product/Cart.vue";
 import CheckOut from "./components/product/CheckOut.vue";
+import Quantity from "./components/product/Quantity.vue";
+
 
 Vue.component("site-header", SiteHeader);
 Vue.component("site-footer", SiteFooter);
@@ -74,6 +76,7 @@ Vue.component("wishlist-product", WishlistProduct);
 Vue.component("favorite-product", Favorite);
 Vue.component("Cart-product", Cart);
 Vue.component("checkout-page", CheckOut);
+Vue.component("quantity-page", Quantity);
 Vue.config.productionTip = false;
 
 new Vue({
