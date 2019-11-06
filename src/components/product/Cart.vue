@@ -24,9 +24,9 @@
           </td>
           <td>{{item.productInfo.priceDiscount}}</td>
           <td>
-            <span>+</span>
+            <span @click="increment(item)">add</span>
             <input type="text" class="el-input__inner" v-model="item.quantity" />
-            <span>-</span>
+            <span @click=" decrement(item)">-</span>
           </td>
 
           <td>
@@ -43,6 +43,7 @@
 export default {
   data() {
     return {
+      mm: 0
       // cartItems: this.$store.getters.cartItems
     };
   },
@@ -60,6 +61,25 @@ export default {
     }
   },
   methods: {
+    increment(item) {
+      // if (this.fullData.quantity < 10) {
+      //   this.fullData.quantity++;
+      // }
+
+      this.$store.state.quantity = item.quantity;
+      this.$store.commit("incrementes");
+      item.quantity = this.$store.state.quantity;
+      // console.log(item);
+    },
+    decrement(item) {
+      // if (this.fullData.quantity > 1) {
+      //   this.fullData.quantity--;
+      // }
+      this.$store.state.quantity = item.quantity;
+      this.$store.commit("decrementes");
+      item.quantity = this.$store.state.quantity;
+      console.log(this.cartItems);
+    },
     removeCart(x) {
       this.$store.commit("removeCart", x);
     },

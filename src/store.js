@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    quantity: 1,
     cartData: [],
     wishList: []
 
@@ -19,6 +20,16 @@ export default new Vuex.Store({
 
   },
   mutations: {
+    incrementes(state) {
+      if (state.quantity < 10) {
+        state.quantity++;
+      }
+    },
+    decrementes(state) {
+      if (state.quantity > 1) {
+        state.quantity--;
+      }
+    },
     AddCartItem(state, product) {
 
       /** Check if aready products in cart data in local storage */
@@ -70,16 +81,9 @@ export default new Vuex.Store({
 
       localStorage.setItem("wishList", JSON.stringify(state.wishList));
     },
-    increment() {
-      if (this.fullData.quantity < 10) {
-        this.fullData.quantity++;
-      }
-    },
-    decrement() {
-      if (this.fullData.quantity > 1) {
-        this.fullData.quantity--;
-      }
-    },
+
+  },
+  actions: {
 
   }
 })
