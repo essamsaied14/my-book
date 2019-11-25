@@ -13,16 +13,16 @@
       </thead>
       <tbody>
         <tr v-for="(item,index) in cartItems" :key="index">
-          <th scope="row">{{item.productInfo.id}}</th>
+          <th scope="row">{{item.id}}</th>
           <td>
             <div class="text-center">
-              <img :src="item.productInfo.url" class="rounded img-product-table" alt="..." />
+              <img :src="item.url" class="rounded img-product-table" alt="..." />
             </div>
           </td>
           <td>
-            <p>{{item.productInfo.title}}</p>
+            <p>{{item.title}}</p>
           </td>
-          <td>{{item.productInfo.priceDiscount}}</td>
+          <td>{{item.priceDiscount}}</td>
           <td>
             <span @click="increment(item)">add</span>
             <input type="text" class="el-input__inner" v-model="item.quantity" />
@@ -48,8 +48,7 @@ export default {
     };
   },
   mounted() {
-    // console.log(this.cartItems);
-    // this.cartItems.forEach(el => console.log(el));
+    console.log(this.cartItems);
   },
   computed: {
     cartItems() {
