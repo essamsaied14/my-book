@@ -24,6 +24,9 @@
             <li class="list-group-item">
               <button @click="Arrangement(productsSource)">A/z</button>
             </li>
+            <li class="list-group-item">
+              <button @click="Errangement(productsSource)">Z/a</button>
+            </li>
           </ul>
         </div>
         <product-card :products="products"></product-card>
@@ -45,8 +48,8 @@ export default {
   data() {
     return {
       filter: "",
-      productsSource: [],
-      products: [],
+      // productsSource: [],
+      // products: [],
       sortedProducts: []
 
       // productsData: this.$store.getters.cartItems
@@ -74,64 +77,41 @@ export default {
 
       this.products = filteredProducts;
     },
-    // Arrangement(arr) {
-    //   // this.sortedProducts = [];
-    //   // this.sortedProducts = this.productsSource.sort(function(product) {
 
-    //   // });
-    //   return arr.slice().sort(function(a, b) {
-    //     return a.title - b.title;
-    //   });
-
-    //   console.log(this.sortedProducts);
-    // },
     Arrangement(arr) {
       // Set slice() to avoid to generate an infinite loop!
-      this.sortedProducts = arr.slice().sort(function(a, b) {
+      this.sortedProducts = arr.sort(function(a, b) {
         // alert(b.title[0]);
         return a.title.charCodeAt(0) - b.title.charCodeAt(0);
       });
       // console.log(this.sortedProducts);
-      this.products = this.sortedProducts;
+      // this.products = this.sortedProducts;
+    },
+    Errangement(arr) {
+      // Set slice() to avoid to generate an infinite loop!
+      this.sortedProducts = arr.sort(function(a, b) {
+        return b.title.charCodeAt(0) - a.title.charCodeAt(0);
+      });
     },
 
     getData() {
-      this.axios
-        .get("https://jsonplaceholder.typicode.com/photos")
-        .then(response => {
-          this.products = response.data;
-          this.productsSource = this.products;
-          // this.productInfo.price = this.getRandomInt(500, 1000);
-          // this.productInfo.priceDiscount = this.getRandomInt(
-          //   500,
-          //   this.productInfo.price - 1
-          // );
-          // this.$emit("allProducts", this.products);
-
-          //console.log(this.products);
-        });
+      this.$store.dispatch("getProducts");
     }
-    // getRandomInt(min, max) {
-    //   min = Math.ceil(min);
-    //   max = Math.floor(max);
-    //   return Math.floor(Math.random() * (max - min + 1)) + min;
-    // }
+  },
+
+  /** Computed */
+  computed: {
+    products() {
+      return this.$store.state.products;
+      // console.log(products);
+    },
+    productsSource() {
+      return this.$store.state.productsSource;
+    }
+  },
+  watch: {
+    products() {},
+    productsSource() {}
   }
-  // filters() {
-  //   this.$store.commit("filters", this.product);
-  // }
 };
-// export default {
-//   data() {
-//     // return {
-//     //   myArray: [{}, {}, {}, {}]
-//     // };
-//   },
-//   mounted() {
-//     // this.myArray.splice(1, 1);
-//     // console.log(this.myArray);
-//     // this.cartItems.forEach(el => console.log(el));
-//   }
-// };
-//
 </script>

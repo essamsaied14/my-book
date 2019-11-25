@@ -80,11 +80,13 @@ export default {
   },
   computed: {
     wishList() {
-      if (this.$store.state.wishList.length) {
-        return this.$store.state.wishList;
-      } else {
-        return this.$store.getters.wishList;
-      }
+      // if (this.$store.state.wishList.length) {
+      //   return this.$store.state.wishList;
+      // } else {
+      //   return this.$store.getters.wishList;
+      // }
+      // return this.$store.getters.wishList;
+      return this.$store.state.wishList;
     }
   },
   methods: {
@@ -94,6 +96,10 @@ export default {
   },
   watch: {
     wishList: {
+      handler() {},
+      deep: true
+    },
+    product: {
       handler() {},
       deep: true
     },

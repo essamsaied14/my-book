@@ -4,13 +4,13 @@
     element-loading-text="xxxxx"
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 52, 128,0.6)"-->
-    <div v-if="like">
+    <div v-if="product.like">
       <span @click="removeWishlist(product)" class="meta-icons wishlist red">
         <i class="icon-heart"></i>
         <!-- :class="liked" -->
       </span>
     </div>
-    <div v-if="!like">
+    <div v-if="!product.like">
       <span @click="AddWishlist()" class="meta-icons wishlist blue">
         <i class="icon-heart"></i>
       </span>
@@ -40,29 +40,40 @@ export default {
       return this.like ? "like" : "";
     },
     wishList() {
-      if (this.$store.state.wishList.length) {
-        return this.$store.state.wishList;
-      } else {
-        return this.$store.getters.wishList;
-      }
+      // if (this.$store.state.wishList.length) {
+      //   return this.$store.state.wishList;
+      // } else {
+      //   return this.$store.getters.wishList;
+      // }
+
+      // return this.$store.getters.wishList;
+      return this.$store.state.wishList;
     }
   },
   methods: {
     AddWishlist() {
+      // this.product.like = true;
       this.$store.commit("AddWishlist", this.product);
       this.like = true;
     },
     removeWishlist(e) {
+      // this.e.like = false;
       this.$store.commit("removeWishlist", e);
       this.like = false;
     }
   },
   watch: {
     wishList: {
-      handler() {},
+      handler() {
+        // console.log(newData);
+      },
       deep: true
     },
     like: {
+      handler() {},
+      deep: true
+    },
+    product: {
       handler() {},
       deep: true
     }
