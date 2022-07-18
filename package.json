@@ -16,7 +16,7 @@
     "element-ui": "^2.12.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.2",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.15.0",
     "portal-vue": "^2.1.6",
